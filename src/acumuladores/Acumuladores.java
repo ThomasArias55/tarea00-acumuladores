@@ -124,6 +124,25 @@ public class Acumuladores {
 	 * @return
 	 */
 	public boolean hayInterseccionPorColumna(int[][] mat1, int[][]mat2) { 
-		throw new RuntimeException("Metodo no implementado aun!!!");
+		if (mat1.length==0 || mat2.length==0 || mat1[0].length!= mat2[0].length) {
+			 return false;
+		}
+		
+		boolean todasLasColumnas=true;
+		
+		for (int c=0; c<mat1[0].length;c++) {
+			todasLasColumnas = todasLasColumnas && columnaConInterseccion(mat1,mat2,c);
+		}
+		return todasLasColumnas;
+	}
+	
+	public boolean columnaConInterseccion(int[][] mat1, int[][] mat2, int numCol) {
+		boolean hayInterseccion = false;
+		for (int f1=0;f1<mat1.length;f1++) {
+			for (int f2=0;f2<mat2.length;f2++) {
+				hayInterseccion= hayInterseccion || mat1[f1][numCol]==mat2[f2][numCol];
+			}
+		}
+		return hayInterseccion;
 	}
 }
