@@ -19,7 +19,7 @@ public class Acumuladores {
 		if (num<1 || mat.length==0 )
 			return acum;
 		
-		for (int f=0; f<mat[0].length;f++) {
+		for (int f=0; f<mat.length;f++) {
 			 acum=acum||FilaConTodosMultiplos(mat[f],num);	
 			}
 		return acum;
