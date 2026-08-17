@@ -85,7 +85,31 @@ public class Acumuladores {
 	 * @return
 	 */
 	public boolean algunaFilaSumaMasQueLaColumna(int[][] mat, int nColum) { 
-		throw new RuntimeException("Metodo no implementado aun!!!");
+		
+		if (mat.length==0 || nColum>=mat[0].length || nColum<0) {
+			return false;
+		}
+		
+		int sumaColum=0;	
+		boolean existeAlguna= false;
+		
+		for (int f=0;f<mat.length;f++) {
+			sumaColum=sumaColum+mat[f][nColum];
+		}
+		
+		for (int i=0; i<mat.length;i++) {
+			existeAlguna = existeAlguna || filaMayor(mat[i],sumaColum);
+		}
+		
+		return existeAlguna;
+	}
+	
+	public boolean filaMayor(int fila[], int sumaColum) {
+		int sumaFila=0;
+		for (int i=0;i<fila.length;i++) {
+			sumaFila=sumaFila + fila[i];
+		}
+		return sumaFila>sumaColum;
 	}
 	
 	/**
