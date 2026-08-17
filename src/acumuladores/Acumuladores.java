@@ -14,7 +14,25 @@ public class Acumuladores {
 	 * @return
 	 */
 	public boolean todosMultiplosEnAlgunaFila(int[][] mat, int num) { 
-		throw new RuntimeException("Metodo no implementado aun!!!");
+		boolean acum= false;
+		
+		if (num<1 || mat.length==0 )
+			return acum;
+		
+		for (int f=0; f<mat[0].length;f++) {
+			 acum=acum||FilaConTodosMultiplos(mat[f],num);	
+			}
+		return acum;
+	}	
+	
+
+	public boolean FilaConTodosMultiplos(int [] fila, int num) {
+		boolean acum= true;
+		for (int i=0; i<fila.length;i++) {
+			acum= acum && fila[i]%num==0;
+		}
+		return acum;
+		
 	}
 	
 	/**
