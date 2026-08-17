@@ -13,25 +13,26 @@ public class Acumuladores {
 	 * @param num
 	 * @return
 	 */
+	
 	public boolean todosMultiplosEnAlgunaFila(int[][] mat, int num) { 
-		boolean acum= false;
+		boolean hayAlgunaFila= false;
 		
 		if (num<1 || mat.length==0 )
-			return acum;
+			return hayAlgunaFila;
 		
 		for (int f=0; f<mat.length;f++) {
-			 acum=acum||FilaConTodosMultiplos(mat[f],num);	
+			hayAlgunaFila=hayAlgunaFila||filaConTodosMultiplos(mat[f],num);	
 			}
-		return acum;
+		return hayAlgunaFila;
 	}	
 	
 
-	public boolean FilaConTodosMultiplos(int [] fila, int num) {
-		boolean acum= true;
+	public boolean filaConTodosMultiplos(int [] fila, int num) {
+		boolean todosMultiplos= true;
 		for (int i=0; i<fila.length;i++) {
-			acum= acum && fila[i]%num==0;
+			todosMultiplos= todosMultiplos && fila[i]%num==0;
 		}
-		return acum;
+		return todosMultiplos;
 		
 	}
 	
@@ -47,7 +48,28 @@ public class Acumuladores {
 	 * @return
 	 */
 	public boolean hayInterseccionPorFila(int[][] mat1, int[][]mat2) { 
-		throw new RuntimeException("Metodo no implementado aun!!!");
+		
+		if (mat1.length==0 || mat2.length==0 || mat1.length!= mat2.length) {
+			 return false;
+		}
+		
+		boolean todasLasFilas=true;
+		
+		for (int i=0; i<mat1.length;i++) {
+			todasLasFilas = todasLasFilas && filaConInterseccion(mat1[i],mat2[i]);
+		}
+		return todasLasFilas;
+	}
+	
+	public boolean filaConInterseccion(int[] fila1, int[] fila2) {
+		boolean hayInterseccion = false;
+		for (int i=0;i<fila1.length;i++) {
+			for (int j=0;j<fila2.length;j++) {
+				hayInterseccion= hayInterseccion || fila1[i]==fila2[j];
+			}
+		}
+		return hayInterseccion;
+		
 	}
 	
 	/**
